@@ -128,20 +128,20 @@ function App() {
     },
     redteam: {
       title: 'Red Team Tool Development',
-      description: 'Custom security tool creation for advanced persistent threat simulation, vulnerability discovery, and security automation. Building tools that scale.',
-      scope: 'Custom Exploits, Automation, C2 Frameworks',
+      description: 'Built AWS Slurp defensive takeover, advanced CTF platforms (Achilles, Paris), and AI-powered exploit development tools. Created custom C2 frameworks and automated vulnerability discovery systems.',
+      scope: 'AWS Slurp, Achilles CTF, Ask Paris AI, Custom C2',
       icon: '⚔️'
     },
     ai_security: {
       title: 'AI-Enabled Security Innovation',
-      description: 'Pioneering next-generation security tools using artificial intelligence for automated vulnerability scanning, exploit development, and threat detection.',
-      scope: 'Agentic Scanning, AI Exploit Dev, ML Threat Detection',
+      description: 'Founded Sugar Security with AI-powered vulnerability scanning platform, acquired by Black Breach. Built Ask Paris for AI-assisted exploit development and automated security research.',
+      scope: 'Sugar Security Platform, Ask Paris, Automated Scanning',
       icon: '🤖'
     },
     speaking: {
-      title: 'Conference Speaking & Training',
-      description: 'Technical instructor and speaker at premier cybersecurity conferences including Black Hat USA and Europe, delivering advanced training to security professionals.',
-      scope: 'Black Hat, Security Conferences, Technical Training',
+      title: 'Black Hat Instructor',
+      description: 'Technical instructor at Black Hat USA and Europe conferences. Delivered training on advanced penetration testing techniques, AI-enabled security tools, and automated vulnerability research to security professionals.',
+      scope: 'Black Hat USA/Europe, Advanced Pentesting, AI Security',
       icon: '🎤'
     }
   };
@@ -320,14 +320,16 @@ function App() {
   const HomePage = () => (
     <>
       <div className="profile-section">
-        <div className="profile-pic">👨‍💻</div>
-        <h1>Hi, I'm Logan Evans</h1>
+        <div className="profile-pic">🍭</div>
+        <h1>Logan Evans</h1>
+        <p className="subtitle">Security Professional • Tool Builder</p>
       </div>
       
       <div className="socials">
         <a href="https://linkedin.com/in/logan-evans-okc" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://github.com/sw33tr0ll" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://x.com/sweetrollbandit" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="/logan-evans-cv.pdf" target="_blank" rel="noopener noreferrer" className="cv-download">Download CV</a>
       </div>
 
       <div className="content-sections">
