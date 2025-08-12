@@ -357,7 +357,7 @@ function App() {
         <a href="https://linkedin.com/in/logan-evans-okc" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://github.com/sw33tr0ll" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://x.com/sweetrollbandit" target="_blank" rel="noopener noreferrer">X</a>
-        <a href="/logan-evans-cv.pdf" target="_blank" rel="noopener noreferrer" className="cv-download">Download CV</a>
+        <a href="/logan-evans-cv.pdf" download="Logan-Evans-CV.pdf" rel="noopener noreferrer" className="cv-download">Download CV</a>
       </div>
 
       <div className="content-sections">
