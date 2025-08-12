@@ -24,6 +24,14 @@ function App() {
       issuer: 'Offensive Security',
       link: 'https://www.offensive-security.com/pwk-oscp/'
     },
+    sans: {
+      name: 'SANS GPYC',
+      fullName: 'GIAC Python Coder',
+      description: 'Validates skills in Python programming for cybersecurity professionals and penetration testing.',
+      icon: '🐍',
+      issuer: 'SANS Institute',
+      link: 'https://www.giac.org/certification/python-coder-gpyc'
+    },
     aws: {
       name: 'AWS SAA',
       fullName: 'AWS Solutions Architect Associate',
@@ -39,14 +47,6 @@ function App() {
       icon: '🌐',
       issuer: 'Google Cloud',
       link: 'https://cloud.google.com/certification/cloud-engineer'
-    },
-    sans: {
-      name: 'SANS GPYC',
-      fullName: 'GIAC Python Coder',
-      description: 'Validates skills in Python programming for cybersecurity professionals and penetration testing.',
-      icon: '🐍',
-      issuer: 'SANS Institute',
-      link: 'https://www.giac.org/certification/python-coder-gpyc'
     }
   };
 
@@ -67,9 +67,9 @@ function App() {
       icon: '🚀'
     },
     digitalsilence: {
-      title: 'Security Consultant',
+      title: 'Independent Security Consultant',
       company: 'Digital Silence',
-      description: 'Provided specialized penetration testing and security assessment services for enterprise clients. Focused on advanced vulnerability research and custom exploit development.',
+      description: 'Ran independent cybersecurity consultancy for 3+ years. Managed all business operations including sales, marketing, finance, and service delivery. Provided specialized penetration testing and security assessment services for enterprise clients.',
       period: '2020-2022',
       icon: '🔒'
     },
@@ -82,10 +82,10 @@ function App() {
     },
     sonic: {
       title: 'Cybersecurity Technician',
-      company: 'Sonic Restaurant',
+      company: 'Sonic Drive-In',
       description: 'Implemented cybersecurity measures and protocols for restaurant chain operations. Managed security infrastructure and compliance requirements across multiple locations.',
       period: '2016-2017',
-      icon: '🔐'
+      icon: '🍟'
     },
     dell: {
       title: 'IT Specialist',
@@ -98,22 +98,22 @@ function App() {
 
   // Technical expertise and stack
   const techStack = {
-    fullstack: {
-      title: 'Full-Stack Development',
-      description: 'Python and JavaScript development with help from AI tools like Claude. Building functional applications from backend APIs to responsive frontends when needed.',
-      technologies: 'Python, JavaScript, React, Node.js, FastAPI, Django',
+    fullstack_engineer: {
+      title: 'Full-Stack Engineer',
+      description: 'Building scalable applications end-to-end with modern serverless architectures. React, Vue, and Django frontends. NodeJS and Python APIs deployed on AWS Lambda with infrastructure as code including Docker containers, Serverless YML, Terraform, Pulumi, and Cloudformation.',
+      technologies: 'Python, JavaScript, REST, Lambda, NoSQL, CloudFormation',
       icon: '⚡'
     },
-    cloud: {
-      title: 'AWS Serverless Architecture',
-      description: 'Certified in designing and implementing serverless solutions. Experience with Lambda functions, API Gateway, DynamoDB, S3, CloudFormation, and infrastructure as code.',
-      technologies: 'Lambda, API Gateway, DynamoDB, CloudFormation, CDK',
-      icon: '☁️'
+    ai_engineering: {
+      title: 'AI Engineering',
+      description: 'Developing AI-powered security tools with RAG and Human-in-the-Loop architectures, MCP integrations, and LLM-assisted vulnerability research. Building intelligent security automation platforms.',
+      technologies: 'LLMs, RAG, Workflows, Agents, MCP, OCR, CV',
+      icon: '🤖'
     },
     security: {
       title: 'Security Engineering',
       description: 'Building security-focused applications with threat modeling, secure coding practices, and automated security testing integration.',
-      technologies: 'SAST/DAST, Threat Modeling, Secure Architecture',
+      technologies: 'SAST/DAST, Threat Modeling, Secure Architecture, Vulnerability Scanning, Exploit Development',
       icon: '🛡️'
     }
   };
@@ -128,26 +128,48 @@ function App() {
     },
     redteam: {
       title: 'Red Team Tool Development',
-      description: 'Built AWS Slurp defensive takeover, advanced CTF platforms (Achilles, Paris), and AI-powered exploit development tools. Created custom C2 frameworks and automated vulnerability discovery systems.',
+      description: 'Built AI-powered exploit development tools, red team automations, sandbox environments (Achilles, Paris), and  Created custom C2 frameworks and automated vulnerability discovery systems.',
       scope: 'AWS Slurp, Achilles CTF, Ask Paris AI, Custom C2',
       icon: '⚔️'
     },
     ai_security: {
-      title: 'AI-Enabled Security Innovation',
-      description: 'Founded Sugar Security with AI-powered vulnerability scanning platform, acquired by Black Breach. Built Ask Paris for AI-assisted exploit development and automated security research.',
-      scope: 'Sugar Security Platform, Ask Paris, Automated Scanning',
+      title: 'AI-Native Security Innovation',
+      description: 'Pioneered enterprise AI security platforms with multi-modal RAG systems, autonomous vulnerability discovery, and LLM-powered exploit synthesis. Built Sugar Security with vector-based threat intelligence and acquired by Black Breach.',
+      scope: 'RAG-based Vuln Discovery, LLM Exploit Synthesis, Multi-Agent Security Systems',
       icon: '🤖'
-    },
+    }
+  };
+
+  // Business & Leadership Expertise
+  const businessExpertise = {
     speaking: {
-      title: 'Black Hat Instructor',
-      description: 'Technical instructor at Black Hat USA and Europe conferences. Delivered training on advanced penetration testing techniques, AI-enabled security tools, and automated vulnerability research to security professionals.',
-      scope: 'Black Hat USA/Europe, Advanced Pentesting, AI Security',
+      title: 'Public Speaking & Training',
+      description: 'Technical instructor at Black Hat USA and Europe conferences. Delivered advanced security training to professionals worldwide. Conference speaker on AI security and automated penetration testing.',
+      scope: 'Black Hat Instructor, Conference Speaking, Technical Training',
       icon: '🎤'
+    },
+    business: {
+      title: 'Business Operations',
+      description: 'Successfully ran independent consultancy for 3+ years managing all aspects: P&L responsibility, financial planning, contract negotiations, and client relationship management. Scaled Sugar Security from concept to acquisition.',
+      scope: 'P&L Management, Financial Planning, Strategic Growth',
+      icon: '📊'
+    },
+    sales_marketing: {
+      title: 'Sales & Marketing',
+      description: 'Drove business development through strategic marketing, content creation, and direct sales. Built brand presence, managed sales pipeline, and closed enterprise security contracts as independent consultant.',
+      scope: 'Enterprise Sales, Content Marketing, Brand Building',
+      icon: '🚀'
     }
   };
 
   // Tools and projects data (excluding duplicates)
   const projects = {
+    askparis: {
+      title: 'Ask Paris - LLM Security Research',
+      description: 'Multi-agent AI platform leveraging RAG architecture and MCP protocols for autonomous vulnerability research, exploit synthesis, and security automation. Features vector-based knowledge graphs and prompt-engineered security workflows.',
+      link: 'https://ask.paris.systems',
+      category: 'Security Tools'
+    },
     slurp: {
       title: 'AWS Slurp GitHub Takeover',
       description: 'Defensive takeover of orphaned AWS S3 enumeration tool repository. Prevented malicious actors from exploiting deleted GitHub account to distribute compromised tooling, highlighting supply chain security risks.',
@@ -166,12 +188,6 @@ function App() {
       link: 'https://ctf.paris.systems',
       category: 'CTF Challenges'
     },
-    askparis: {
-      title: 'Ask Paris - AI Exploit Development',
-      description: 'Advanced AI-powered exploit development platform that assists security researchers in vulnerability analysis and proof-of-concept creation.',
-      link: 'https://ask.paris.systems',
-      category: 'Security Tools'
-    },
     elongate: {
       title: 'Elongate Stock Tracker',
       description: 'AI-powered sentiment analysis tool that monitors Elon Musk\'s Twitter activity to predict stock and cryptocurrency market movements based on his tweets.',
@@ -179,8 +195,8 @@ function App() {
       category: 'Fun Projects'
     },
     cuss: {
-      title: 'Cuss Language Learning',
-      description: 'A Duolingo-style language learning platform focused on profanity and colorful expressions from around the world. Educational... sort of.',
+      title: 'Duolingo for Swearing',
+      description: 'A language learning platform focused on profanity and colorful expressions from around the world. Educational... sort of.',
       link: 'https://cuss.loganevans.me',
       category: 'Fun Projects'
     }
@@ -191,27 +207,30 @@ function App() {
     
     return (
       <div 
-        className="project-card" 
-        onClick={(e) => {
-          // If clicking the title area, expand; if clicking external link icon, open link
-          if (e.target.classList.contains('external-link')) {
-            window.open(project.link, '_blank');
-          } else {
-            toggleCardExpansion(`project-${projectKey}`);
-          }
-        }}
+        className="project-card"
+        onClick={() => toggleCardExpansion(`project-${projectKey}`)}
       >
         <div className="card-header">
           <h4>{project.title}</h4>
-          <div className="project-actions">
-            <span className="external-link" title="Open project">🔗</span>
+          <div className="expand-section">
+            <span className="see-more-text">see more</span>
             <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
           </div>
         </div>
         {isExpanded && (
           <>
             <p className="project-category">{project.category}</p>
-            <p>{project.description}</p>
+            <p className="project-description">{project.description}</p>
+            <button 
+              className="external-link-btn" 
+              title="Open project"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(project.link, '_blank');
+              }}
+            >
+              🔗 More Info
+            </button>
           </>
         )}
       </div>
@@ -231,7 +250,7 @@ function App() {
     return (
       <div 
         className="interactive-card" 
-        onClick={(e) => {
+        onClick={() => {
           if (onClick) {
             onClick();
           } else {
@@ -241,14 +260,18 @@ function App() {
       >
         <div className="card-header">
           <span className="card-icon">{item.icon}</span>
-          <h4>{item.company ? `${item.title} - ${item.company}` : item.title}</h4>
-          <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
+          <div className="card-title-section">
+            <h4>{item.company ? `${item.title} - ${item.company}` : item.title}</h4>
+            {item.period && <span className="card-period-header">{item.period}</span>}
+          </div>
+          <div className="expand-section">
+            <span className="see-more-text">see more</span>
+            <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
+          </div>
         </div>
         {isExpanded && (
           <>
             <p>{item.description}</p>
-            {item.period && <span className="card-period">{item.period}</span>}
-            {item.company && <span className="card-company">{item.company}</span>}
             {item.outcome && <span className="card-outcome">{item.outcome}</span>}
             {item.impact && <span className="card-impact">{item.impact}</span>}
           </>
@@ -268,7 +291,10 @@ function App() {
         <div className="card-header">
           <span className="card-icon">{item.icon}</span>
           <h4>{item.title}</h4>
-          <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
+          <div className="expand-section">
+            <span className="see-more-text">see more</span>
+            <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
+          </div>
         </div>
         {isExpanded && (
           <>
@@ -286,15 +312,8 @@ function App() {
     
     return (
       <div 
-        className="cert-card" 
-        onClick={(e) => {
-          // If clicking the link icon, open external link; otherwise expand
-          if (e.target.classList.contains('cert-external-link')) {
-            window.open(cert.link, '_blank');
-          } else {
-            toggleCardExpansion(`cert-${certKey}`);
-          }
-        }}
+        className="cert-card"
+        onClick={() => toggleCardExpansion(`cert-${certKey}`)}
       >
         <div className="cert-header">
           <span className="cert-icon">{cert.icon}</span>
@@ -302,8 +321,8 @@ function App() {
             <span className="cert-name">{cert.name}</span>
             <span className="cert-issuer">{cert.issuer}</span>
           </div>
-          <div className="cert-actions">
-            <span className="cert-external-link" title="View certification details">🔗</span>
+          <div className="expand-section">
+            <span className="see-more-text">see more</span>
             <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
           </div>
         </div>
@@ -311,6 +330,16 @@ function App() {
           <div className="cert-details">
             <p className="cert-full-name">{cert.fullName}</p>
             <p className="cert-description">{cert.description}</p>
+            <button 
+              className="cert-external-link-btn" 
+              title="View certification details"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(cert.link, '_blank');
+              }}
+            >
+              🔗 More Info
+            </button>
           </div>
         )}
       </div>
@@ -320,8 +349,7 @@ function App() {
   const HomePage = () => (
     <>
       <div className="profile-section">
-        <div className="profile-pic">🍭</div>
-        <h1>Logan Evans</h1>
+        <h1>🍬 Logan Evans</h1>
         <p className="subtitle">Security Professional • Tool Builder</p>
       </div>
       
@@ -353,7 +381,7 @@ function App() {
         </div>
 
         <div className="expertise-sections">
-          <h2 className="expertise-main-title">Technical Expertise & Specializations</h2>
+          <h2 className="expertise-main-title">Core Expertise</h2>
           
           <div className="section tech-stack-section">
             <h3>Tech Stack</h3>
@@ -368,6 +396,14 @@ function App() {
             <h3>Security Specializations</h3>
             <div className="expertise-grid">
               {Object.entries(securitySpecializations).map(([key, item]) => (
+                <ExpertiseCard key={key} item={item} itemKey={key} />
+              ))}
+            </div>
+          </div>
+          <div className="section business-expertise-section">
+            <h3>Business & Leadership</h3>
+            <div className="expertise-grid">
+              {Object.entries(businessExpertise).map(([key, item]) => (
                 <ExpertiseCard key={key} item={item} itemKey={key} />
               ))}
             </div>

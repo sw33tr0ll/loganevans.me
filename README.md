@@ -1,21 +1,12 @@
-# Logan Evans - Security Professional & CTO
+# Personal Portfolio Website
 
-Personal portfolio of a cybersecurity executive who built and sold Sugar Security, now CTO at Black Breach after acquisition.
+A React-based portfolio site showcasing professional experience, technical expertise, and security projects. Features an expandable card interface with responsive design optimized for professional presentation.
 
-## Technical Achievements
+## Tech Stack
 
-- **Startup Exit**: Founded Sugar Security, built enterprise vulnerability scanning platform, acquired by Black Breach
-- **Conference Speaker**: Black Hat USA and Europe technical instructor
-- **Tool Developer**: Created AWS Slurp defensive takeover, advanced CTF challenges, AI exploit development platforms
-- **Certifications**: CISSP, OSCP, AWS Solutions Architect, GCP Associate Cloud Engineer, SANS GPYC
-- **Career Arc**: Dell IT → Coalfire Labs → Digital Silence → Sugar Security Founder → Black Breach CTO
-
-## Technical Stack
-
-- **Security**: Custom exploit development, automated pentesting tools, vulnerability research
-- **Cloud**: AWS serverless architecture (Lambda, API Gateway, DynamoDB, CloudFormation)  
-- **Development**: Python, JavaScript, React, FastAPI, Django with AI-assisted development
-- **Infrastructure**: Infrastructure as Code, CI/CD, scalable security platforms
+- **Frontend**: React 18, CSS3 with modern animations
+- **Deployment**: AWS Amplify with automatic CI/CD
+- **Architecture**: Single-page application with static deployment
 
 ## Getting Started
 

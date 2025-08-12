@@ -96,6 +96,9 @@
   width: 100%;
   max-width: 1200px;
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .section-row {
@@ -106,17 +109,28 @@
 }
 
 .section {
-  padding: 20px;
+  padding: 25px;
   background: rgba(255, 20, 147, 0.05);
   border: 1px solid rgba(255, 20, 147, 0.2);
   border-radius: 15px;
   backdrop-filter: blur(10px);
-  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff1493, #ff69b4, #ff1493);
 }
 
 .section h2 {
   font-size: 1.4rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: #ff1493;
   text-align: center;
 }
@@ -124,24 +138,25 @@
 .section-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .interactive-card {
-  padding: 15px;
+  padding: 20px;
   background: rgba(255, 20, 147, 0.1);
-  border-radius: 10px;
-  font-size: 0.9rem;
-  border-left: 4px solid #ff1493;
+  border: 1px solid rgba(255, 20, 147, 0.3);
+  border-radius: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .interactive-card:hover {
-  background: rgba(255, 20, 147, 0.2);
-  transform: translateX(5px);
-  box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
-  border-left-width: 6px;
+  background: rgba(255, 20, 147, 0.15);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.3);
+  border-color: #ff1493;
 }
 
 .card-header {
@@ -152,13 +167,46 @@
   margin-bottom: 8px;
 }
 
+.expand-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.see-more-text {
+  font-size: 0.75rem;
+  color: rgba(255, 105, 180, 0.7);
+  font-style: italic;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.expand-section:hover .see-more-text {
+  color: rgba(255, 105, 180, 1);
+}
+
 .expand-indicator {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #ff1493;
+  color: #ff69b4;
   cursor: pointer;
   user-select: none;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
+  background: rgba(255, 20, 147, 0.1);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 20, 147, 0.3);
+}
+
+.expand-section:hover .expand-indicator {
+  background: rgba(255, 20, 147, 0.2);
+  border-color: #ff1493;
+  transform: scale(1.1);
 }
 
 .see-more-btn {
@@ -185,37 +233,66 @@
   gap: 10px;
 }
 
-.external-link {
+.external-link-btn,
+.cert-external-link-btn {
+  background: rgba(255, 20, 147, 0.2);
+  border: 1px solid rgba(255, 20, 147, 0.4);
+  color: #ff69b4;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 1rem;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.external-link:hover {
-  opacity: 1;
+.external-link-btn:hover,
+.cert-external-link-btn:hover {
+  background: rgba(255, 20, 147, 0.3);
+  border-color: #ff1493;
+  color: #ff1493;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 20, 147, 0.3);
 }
 
 .card-icon {
   font-size: 1.2rem;
 }
 
-.card-header h4 {
+.card-header h4,
+.project-card h4,
+.cert-name {
   margin: 0;
   font-size: 1rem;
   color: #ff69b4;
+  font-weight: bold;
 }
 
 .card-period,
 .card-company,
 .card-outcome,
-.card-impact {
+.card-impact,
+.card-period-header,
+.cert-issuer,
+.project-category {
   display: block;
   font-size: 0.8rem;
   color: #ff1493;
   font-style: italic;
   margin-top: 5px;
 }
+
+.card-title-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+/* Consolidated with above rule */
+
 
 .expertise-sections {
   margin-bottom: 30px;
@@ -227,26 +304,22 @@
 }
 
 .expertise-main-title {
-  font-size: 1.8rem;
-  margin-bottom: 25px;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
   color: #ff1493;
   text-align: center;
-  background: linear-gradient(45deg, #ff1493, #ff69b4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .expertise-sections h3 {
   font-size: 1.4rem;
-  margin-bottom: 15px;
-  color: #ff69b4;
+  margin-bottom: 20px;
+  color: #ff1493;
   text-align: center;
 }
 
 .expertise-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   margin-bottom: 30px;
 }
@@ -278,12 +351,16 @@
 
 .expertise-card:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 25px rgba(255, 20, 147, 0.3);
+  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.3);
   border-color: #ff1493;
   background: rgba(255, 20, 147, 0.15);
 }
 
-.expertise-description {
+.expertise-description,
+.cert-description,
+.project-card p:last-child,
+.project-description,
+.interactive-card p {
   color: white;
   font-size: 0.9rem;
   line-height: 1.4;
@@ -313,16 +390,11 @@
   backdrop-filter: blur(10px);
 }
 
-.tools-section h2 {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  color: #ff1493;
-  text-align: center;
-}
+/* Consolidated with main section h2 rule */
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   margin-top: 20px;
 }
@@ -354,59 +426,36 @@
 }
 
 .project-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(255, 20, 147, 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.3);
   border-color: #ff1493;
   background: rgba(255, 20, 147, 0.15);
 }
 
-.project-card h4 {
-  color: #ff69b4;
-  margin: 0 0 10px 0;
-  font-size: 1.2rem;
-}
+/* Consolidated with main card header rule */
 
-.project-category {
-  color: #ff1493;
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 0 0 15px 0;
-  opacity: 0.8;
-}
+/* Consolidated with main small text rule */
 
-.project-card p:last-child {
-  color: white;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin: 0;
-}
+/* Consolidated with above rule */
 
 .certs-section {
-  max-width: 1000px;
+  max-width: 1200px;
   margin-bottom: 40px;
 }
 
-.certs-section h2 {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  color: #ff1493;
-}
+/* Consolidated with main section h2 rule */
 
 .certs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .cert-card {
   background: linear-gradient(45deg, rgba(255, 20, 147, 0.1), rgba(255, 105, 180, 0.1));
   border: 1px solid rgba(255, 20, 147, 0.3);
   border-radius: 15px;
-  padding: 15px;
+  padding: 20px;
   transition: all 0.2s ease;
   cursor: pointer;
   position: relative;
@@ -429,9 +478,9 @@
 }
 
 .cert-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.4);
-  background: linear-gradient(45deg, rgba(255, 20, 147, 0.2), rgba(255, 105, 180, 0.2));
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.3);
+  background: rgba(255, 20, 147, 0.15);
   border-color: #ff1493;
 }
 
@@ -455,15 +504,10 @@
   flex: 1;
 }
 
-.cert-name {
-  font-weight: bold;
-  font-size: 1rem;
-  color: #ff69b4;
-  margin-bottom: 2px;
-}
+/* Consolidated with main card header rule */
 
 .cert-issuer {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #ff1493;
   opacity: 0.8;
 }
@@ -474,16 +518,6 @@
   gap: 10px;
 }
 
-.cert-external-link {
-  cursor: pointer;
-  font-size: 1rem;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-
-.cert-external-link:hover {
-  opacity: 1;
-}
 
 .cert-details {
   margin-top: 15px;
@@ -494,15 +528,23 @@
 .cert-full-name {
   font-weight: bold;
   color: #ff69b4;
-  margin: 0 0 10px 0;
-  font-size: 1rem;
+  margin: 0 0 8px 0;
+  font-size: 0.85rem;
 }
 
-.cert-description {
-  color: white;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin: 0;
+/* Consolidated with above rule */
+
+/* Responsive design improvements */
+@media (max-width: 1200px) {
+  .content-sections {
+    max-width: 900px;
+  }
+  
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -533,15 +575,6 @@
     gap: 15px;
   }
   
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .certs-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  
   .section {
     padding: 15px;
   }
@@ -551,11 +584,26 @@
   }
   
   .expertise-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 15px;
   }
   
   .tools-section {
     padding: 20px;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .card-title-section {
+    width: 100%;
+  }
+  
+  .expand-indicator {
+    align-self: flex-end;
   }
 }
