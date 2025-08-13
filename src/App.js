@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [currentView, setCurrentView] = useState('home');
   const [expandedCards, setExpandedCards] = useState({});
   const [showAllExperience, setShowAllExperience] = useState(false);
+  const [selectedCert, setSelectedCert] = useState(null);
 
   // Certification data with detailed information
   const certifications = {
     cissp: {
       name: 'CISSP',
       fullName: 'Certified Information Systems Security Professional',
-      description: 'Advanced cybersecurity certification covering security and risk management, asset security, security architecture, and more.',
+      description: 'Advanced cybersecurity certification covering security and risk management, asset security, security architecture, communications and network security, identity and access management, security assessment and testing, security operations, and software development security.',
       icon: '🛡️',
       issuer: '(ISC)²',
       link: 'https://www.isc2.org/Certifications/CISSP'
@@ -19,31 +19,31 @@ function App() {
     oscp: {
       name: 'OSCP',
       fullName: 'Offensive Security Certified Professional',
-      description: 'Hands-on penetration testing certification requiring practical exploitation skills and report writing.',
+      description: 'Hands-on penetration testing certification requiring practical exploitation skills, report writing, and 24-hour practical exam. Demonstrates real-world offensive security capabilities.',
       icon: '⚔️',
       issuer: 'Offensive Security',
       link: 'https://www.offensive-security.com/pwk-oscp/'
     },
     sans: {
-      name: 'SANS GPYC',
+      name: 'GPYC',
       fullName: 'GIAC Python Coder',
-      description: 'Validates skills in Python programming for cybersecurity professionals and penetration testing.',
+      description: 'Validates skills in Python programming for cybersecurity professionals, including scripting for penetration testing, security automation, and malware analysis.',
       icon: '🐍',
       issuer: 'SANS Institute',
       link: 'https://www.giac.org/certification/python-coder-gpyc'
     },
     aws: {
-      name: 'AWS SAA',
+      name: 'SAA',
       fullName: 'AWS Solutions Architect Associate',
-      description: 'Validates expertise in designing distributed systems and applications on AWS cloud platform.',
+      description: 'Validates expertise in designing distributed systems and applications on AWS cloud platform, including compute, networking, storage, and database services.',
       icon: '☁️',
       issuer: 'Amazon Web Services',
       link: 'https://aws.amazon.com/certification/certified-solutions-architect-associate/'
     },
     gcp: {
-      name: 'GCP ACE',
+      name: 'ACE',
       fullName: 'Google Cloud Associate Cloud Engineer',
-      description: 'Demonstrates ability to deploy applications, monitor operations, and maintain cloud projects on GCP.',
+      description: 'Demonstrates ability to deploy applications, monitor operations, and maintain cloud projects on Google Cloud Platform.',
       icon: '🌐',
       issuer: 'Google Cloud',
       link: 'https://cloud.google.com/certification/cloud-engineer'
@@ -51,191 +51,145 @@ function App() {
   };
 
   // Professional experience data
-  const professionalExperience = {
-    blackbreach: {
+  const professionalExperience = [
+    {
+      id: 'blackbreach',
       title: 'Chief Technology Officer',
       company: 'Black Breach',
+      period: '2024 - Present',
       description: 'Spearheading cybersecurity innovation and development after successful acquisition of Sugar Security. Leading automated penetration testing solutions and cloud security initiatives.',
-      period: '2024-Current',
+      tags: ['Leadership', 'Strategy', 'Product Development'],
       icon: '👔'
     },
-    sugar: {
+    {
+      id: 'sugar',
       title: 'Founder & Lead Security Engineer',
       company: 'Sugar Security',
+      period: '2022 - 2024',
       description: 'Founded and developed comprehensive vulnerability scanning platform from concept to acquisition. Built enterprise-grade security tools and managed technical operations as founding engineer.',
-      period: '2022-2024',
+      tags: ['Entrepreneurship', 'Product Development', 'Security Engineering'],
       icon: '🚀'
     },
-    digitalsilence: {
-      title: 'Independent Security Consultant',
+    {
+      id: 'digitalsilence',
+      title: 'Lead Penetration Tester',
       company: 'Digital Silence',
-      description: 'Ran independent cybersecurity consultancy for 3+ years. Managed all business operations including sales, marketing, finance, and service delivery. Provided specialized penetration testing and security assessment services for enterprise clients.',
-      period: '2020-2022',
+      period: '2020 - 2022',
+      description: 'Elite penetration tester specializing in advanced application security and cloud infrastructure attacks. Led high-stakes engagements including infrastructure compromise, healthcare and financial services penetration testing, and stealth red team operations. Executed sophisticated multi-vector attacks across dynamic environments.',
+      tags: ['Advanced Pentesting', 'Cloud Security', 'Red Team Operations', 'Critical Infrastructure'],
       icon: '🔒'
     },
-    coalfire: {
+    {
+      id: 'coalfire',
       title: 'Penetration Tester & Security Consultant',
       company: 'Coalfire Labs',
+      period: '2017 - 2020',
       description: 'Specialized in enterprise environment testing, web application and API security assessments. Conducted comprehensive security evaluations for Fortune 500 companies.',
-      period: '2017-2020',
+      tags: ['Penetration Testing', 'Security Assessment', 'Enterprise Security'],
       icon: '🛡️'
     },
-    sonic: {
+    {
+      id: 'sonic',
       title: 'Cybersecurity Technician',
       company: 'Sonic Drive-In',
-      description: 'Implemented cybersecurity measures and protocols for restaurant chain operations. Managed security infrastructure and compliance requirements across multiple locations.',
-      period: '2016-2017',
+      period: '2016 - 2017',
+      description: 'Implemented cybersecurity measures and protocols for restaurant operations. Managed security infrastructure and compliance requirements across multiple locations.',
+      tags: ['Infrastructure Security', 'Compliance', 'Operations'],
       icon: '🍟'
     },
-    dell: {
+    {
+      id: 'dell',
       title: 'IT Specialist',
       company: 'Dell Inc.',
+      period: '2014 - 2016',
       description: 'IT specialist role with light security responsibilities. Supported enterprise infrastructure and gained foundational experience in systems administration and security operations.',
-      period: '2014-2016',
+      tags: ['IT Support', 'Systems Administration', 'Infrastructure'],
       icon: '💻'
     }
-  };
+  ];
 
-  // Technical expertise and stack
-  const techStack = {
-    fullstack_engineer: {
-      title: 'Full-Stack Engineer',
-      description: 'Building scalable applications end-to-end with modern serverless architectures. React, Vue, and Django frontends. NodeJS and Python APIs deployed on AWS Lambda with infrastructure as code including Docker containers, Serverless YML, Terraform, Pulumi, and Cloudformation.',
-      technologies: 'Python, JavaScript, REST, Lambda, NoSQL, CloudFormation',
-      icon: '⚡'
-    },
-    ai_engineering: {
-      title: 'AI Engineering',
-      description: 'Developing AI-powered security tools with RAG and Human-in-the-Loop architectures, MCP integrations, and LLM-assisted vulnerability research. Building intelligent security automation platforms.',
-      technologies: 'LLMs, RAG, Workflows, Agents, MCP, OCR, CV',
-      icon: '🤖'
-    },
-    security: {
-      title: 'Security Engineering',
-      description: 'Building security-focused applications with threat modeling, secure coding practices, and automated security testing integration.',
-      technologies: 'SAST/DAST, Threat Modeling, Secure Architecture, Vulnerability Scanning, Exploit Development',
-      icon: '🛡️'
-    }
-  };
-
-  // Security specializations
-  const securitySpecializations = {
-    pentesting: {
-      title: 'Multi-Platform Penetration Testing',
-      description: 'Comprehensive security assessments across web applications, mobile apps, cloud infrastructure, and network environments. Expert in manual testing and automated tool development.',
-      scope: 'Web Apps, Mobile Apps, Cloud, Networks, APIs',
+  // Core Expertise - Combined technical and security specializations
+  const coreExpertise = [
+    {
+      id: 'pentesting',
+      title: 'Advanced Penetration Testing',
+      description: 'Elite penetration testing across web applications, mobile apps, cloud infrastructure, and network environments. Specialized in high-stakes engagements including critical infrastructure, healthcare systems, and financial services.',
+      tags: ['Web Apps', 'Mobile', 'Cloud', 'Networks', 'Critical Infrastructure'],
       icon: '🎯'
     },
-    redteam: {
-      title: 'Red Team Tool Development',
-      description: 'Built AI-powered exploit development tools, red team automations, sandbox environments (Achilles, Paris), and  Created custom C2 frameworks and automated vulnerability discovery systems.',
-      scope: 'AWS Slurp, Achilles CTF, Ask Paris AI, Custom C2',
+    {
+      id: 'redteam',
+      title: 'Red Team Operations & Tool Development',
+      description: 'Built AI-powered exploit development tools, red team automations, sandbox environments, and custom C2 frameworks. Led stealth operations and advanced persistent threat simulations.',
+      tags: ['Exploit Development', 'C2 Frameworks', 'APT Simulation', 'Custom Tools'],
       icon: '⚔️'
     },
-    ai_security: {
-      title: 'AI-Native Security Innovation',
-      description: 'Pioneered enterprise AI security platforms with multi-modal RAG systems, autonomous vulnerability discovery, and LLM-powered exploit synthesis. Built Sugar Security with vector-based threat intelligence and acquired by Black Breach.',
-      scope: 'RAG-based Vuln Discovery, LLM Exploit Synthesis, Multi-Agent Security Systems',
+    {
+      id: 'ai_security',
+      title: 'AI-Native Security Engineering',
+      description: 'Pioneered enterprise AI security platforms with multi-modal RAG systems, autonomous vulnerability discovery, and LLM-powered exploit synthesis. Building the future of automated security testing.',
+      tags: ['RAG Systems', 'LLM Security', 'Multi-Agent Systems', 'AI Automation'],
       icon: '🤖'
-    }
-  };
-
-  // Business & Leadership Expertise
-  const businessExpertise = {
-    speaking: {
-      title: 'Public Speaking & Training',
-      description: 'Technical instructor at Black Hat USA and Europe conferences. Delivered advanced security training to professionals worldwide. Conference speaker on AI security and automated penetration testing.',
-      scope: 'Black Hat Instructor, Conference Speaking, Technical Training',
-      icon: '🎤'
     },
-    business: {
-      title: 'Business Operations',
-      description: 'Successfully ran independent consultancy for 3+ years managing all aspects: P&L responsibility, financial planning, contract negotiations, and client relationship management. Scaled Sugar Security from concept to acquisition.',
-      scope: 'P&L Management, Financial Planning, Strategic Growth',
-      icon: '📊'
+    {
+      id: 'fullstack',
+      title: 'Full-Stack Security Engineering',
+      description: 'Building scalable security applications end-to-end with modern serverless architectures. React, Vue, and Django frontends. Python and NodeJS security APIs with threat modeling and secure coding practices.',
+      tags: ['Python', 'JavaScript', 'React', 'AWS Lambda', 'Secure Architecture'],
+      icon: '⚡'
     },
-    sales_marketing: {
-      title: 'Sales & Marketing',
-      description: 'Drove business development through strategic marketing, content creation, and direct sales. Built brand presence, managed sales pipeline, and closed enterprise security contracts as independent consultant.',
-      scope: 'Enterprise Sales, Content Marketing, Brand Building',
-      icon: '🚀'
+    {
+      id: 'cloud_security',
+      title: 'Cloud Security Architecture',
+      description: 'Expert in AWS and GCP security architecture, infrastructure as code, and cloud-native security solutions. Specialized in serverless security and multi-cloud environments.',
+      tags: ['AWS Security', 'GCP Security', 'Infrastructure as Code', 'Serverless Security'],
+      icon: '☁️'
     }
-  };
+  ];
 
-  // Tools and projects data (excluding duplicates)
-  const projects = {
-    askparis: {
+  // Tools and projects data
+  const projects = [
+    {
+      id: 'askparis',
       title: 'Ask Paris - LLM Security Research',
-      description: 'Multi-agent AI platform leveraging RAG architecture and MCP protocols for autonomous vulnerability research, exploit synthesis, and security automation. Features vector-based knowledge graphs and prompt-engineered security workflows.',
-      link: 'https://ask.paris.systems',
-      category: 'Security Tools'
+      description: 'AI platform leveraging RAG architecture for autonomous vulnerability research and exploit development.',
+      link: 'https://github.com/sw33tr0ll/ask.paris.systems',
+      category: 'Security Tools',
+      tags: ['AI', 'Security Research', 'Automation']
     },
-    slurp: {
+    {
+      id: 'slurp',
       title: 'AWS Slurp GitHub Takeover',
-      description: 'Defensive takeover of orphaned AWS S3 enumeration tool repository. Prevented malicious actors from exploiting deleted GitHub account to distribute compromised tooling, highlighting supply chain security risks.',
+      description: 'Defensive takeover of orphaned AWS S3 enumeration tool repository. Prevented malicious actors from exploiting deleted GitHub account to distribute compromised tooling.',
       link: 'https://github.com/bbb31/slurp',
-      category: 'Security Research'
+      category: 'Security Research',
+      tags: ['Supply Chain Security', 'AWS', 'Open Source']
     },
-    achilles: {
+    {
+      id: 'achilles',
       title: 'Achilles CTF - RCE via Calculator',
-      description: 'Advanced Capture The Flag challenge featuring Remote Code Execution through calculator functionality. Built with Python, Docker, and AWS Serverless architecture for scalable security training.',
+      description: 'Advanced Capture The Flag challenge featuring Remote Code Execution through calculator functionality. Built with Python, Docker, and AWS Serverless architecture.',
       link: 'https://achilles.technology',
-      category: 'CTF Challenges'
+      category: 'CTF Challenges',
+      tags: ['CTF', 'RCE', 'Python', 'Docker', 'AWS']
     },
-    parisctf: {
+    {
+      id: 'parisctf',
       title: 'Paris CTF - Path Traversal Challenge',
-      description: 'Sophisticated CTF demonstrating path traversal vulnerabilities through an insecure translation library used for multi-language site loading. Educational security challenge for advanced learners.',
+      description: 'Sophisticated CTF demonstrating path traversal vulnerabilities through an insecure translation library used for multi-language site loading.',
       link: 'https://ctf.paris.systems',
-      category: 'CTF Challenges'
+      category: 'CTF Challenges',
+      tags: ['CTF', 'Path Traversal', 'Web Security']
     },
-    elongate: {
+    {
+      id: 'elongate',
       title: 'Elongate Stock Tracker',
-      description: 'AI-powered sentiment analysis tool that monitors Elon Musk\'s Twitter activity to predict stock and cryptocurrency market movements based on his tweets.',
-      link: 'https://elongate.loganevans.me',
-      category: 'Fun Projects'
-    },
-    cuss: {
-      title: 'Duolingo for Swearing',
-      description: 'A language learning platform focused on profanity and colorful expressions from around the world. Educational... sort of.',
-      link: 'https://cuss.loganevans.me',
-      category: 'Fun Projects'
+      description: 'AI-powered sentiment analysis tool that monitors Elon Musk\'s Twitter activity to predict stock and cryptocurrency market movements.',
+      link: 'https://github.com/sw33tr0ll/elongate',
+      category: 'Fun Projects',
+      tags: ['AI', 'Sentiment Analysis', 'Finance', 'Twitter API']
     }
-  };
-
-  const ProjectCard = ({ project, projectKey }) => {
-    const isExpanded = expandedCards[`project-${projectKey}`];
-    
-    return (
-      <div 
-        className="project-card"
-        onClick={() => toggleCardExpansion(`project-${projectKey}`)}
-      >
-        <div className="card-header">
-          <h4>{project.title}</h4>
-          <div className="expand-section">
-            <span className="see-more-text">see more</span>
-            <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
-          </div>
-        </div>
-        {isExpanded && (
-          <>
-            <p className="project-category">{project.category}</p>
-            <p className="project-description">{project.description}</p>
-            <button 
-              className="external-link-btn" 
-              title="Open project"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open(project.link, '_blank');
-              }}
-            >
-              🔗 More Info
-            </button>
-          </>
-        )}
-      </div>
-    );
-  };
+  ];
 
   const toggleCardExpansion = (cardId) => {
     setExpandedCards(prev => ({
@@ -244,205 +198,191 @@ function App() {
     }));
   };
 
-  const InteractiveCard = ({ item, itemKey, onClick }) => {
-    const isExpanded = expandedCards[`interactive-${itemKey}`];
-    
-    return (
-      <div 
-        className="interactive-card" 
-        onClick={() => {
-          if (onClick) {
-            onClick();
-          } else {
-            toggleCardExpansion(`interactive-${itemKey}`);
-          }
-        }}
-      >
-        <div className="card-header">
-          <span className="card-icon">{item.icon}</span>
-          <div className="card-title-section">
-            <h4>{item.company ? `${item.title} - ${item.company}` : item.title}</h4>
-            {item.period && <span className="card-period-header">{item.period}</span>}
-          </div>
-          <div className="expand-section">
-            <span className="see-more-text">see more</span>
-            <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
-          </div>
-        </div>
-        {isExpanded && (
-          <>
-            <p>{item.description}</p>
-            {item.outcome && <span className="card-outcome">{item.outcome}</span>}
-            {item.impact && <span className="card-impact">{item.impact}</span>}
-          </>
-        )}
-      </div>
-    );
+  const openCertModal = (cert) => {
+    setSelectedCert(cert);
   };
 
-  const ExpertiseCard = ({ item, itemKey }) => {
-    const isExpanded = expandedCards[`expertise-${itemKey}`];
-    
-    return (
-      <div 
-        className="expertise-card"
-        onClick={() => toggleCardExpansion(`expertise-${itemKey}`)}
-      >
-        <div className="card-header">
-          <span className="card-icon">{item.icon}</span>
-          <h4>{item.title}</h4>
-          <div className="expand-section">
-            <span className="see-more-text">see more</span>
-            <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
-          </div>
-        </div>
-        {isExpanded && (
-          <>
-            <p className="expertise-description">{item.description}</p>
-            {item.technologies && <span className="expertise-tech">{item.technologies}</span>}
-            {item.scope && <span className="expertise-scope">{item.scope}</span>}
-          </>
-        )}
-      </div>
-    );
+  const closeCertModal = () => {
+    setSelectedCert(null);
   };
 
-  const CertificationCard = ({ cert, certKey }) => {
-    const isExpanded = expandedCards[`cert-${certKey}`];
-    
-    return (
-      <div 
-        className="cert-card"
-        onClick={() => toggleCardExpansion(`cert-${certKey}`)}
-      >
-        <div className="cert-header">
-          <span className="cert-icon">{cert.icon}</span>
-          <div className="cert-info">
-            <span className="cert-name">{cert.name}</span>
-            <span className="cert-issuer">{cert.issuer}</span>
-          </div>
-          <div className="expand-section">
-            <span className="see-more-text">see more</span>
-            <span className="expand-indicator">{isExpanded ? '−' : '+'}</span>
-          </div>
+  const Card = ({ item, isExpanded, onToggle, children }) => (
+    <div className="card" onClick={onToggle}>
+      <div className="card-header">
+        <div className="card-main">
+          <div className="card-title">{item.title}</div>
+          {item.company && <div className="card-subtitle">{item.company}</div>}
+          {item.period && <div className="card-meta">{item.period}</div>}
         </div>
-        {isExpanded && (
-          <div className="cert-details">
-            <p className="cert-full-name">{cert.fullName}</p>
-            <p className="cert-description">{cert.description}</p>
-            <button 
-              className="cert-external-link-btn" 
-              title="View certification details"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open(cert.link, '_blank');
-              }}
-            >
-              🔗 More Info
-            </button>
-          </div>
-        )}
-      </div>
-    );
-  };
-
-  const HomePage = () => (
-    <>
-      <div className="profile-section">
-        <h1>🍬 Logan Evans</h1>
-        <p className="subtitle">Security Professional • Tool Builder</p>
-      </div>
-      
-      <div className="socials">
-        <a href="https://linkedin.com/in/logan-evans-okc" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/sw33tr0ll" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://x.com/sweetrollbandit" target="_blank" rel="noopener noreferrer">X</a>
-        <a 
-          href={`${process.env.PUBLIC_URL}/logan-evans-cv.pdf`}
-          download="Logan-Evans-CV.pdf"
-          rel="noopener noreferrer" 
-          className="cv-download"
+        <button 
+          className="expand-button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggle();
+          }}
         >
-          Download CV
-        </a>
+          {isExpanded ? '−' : '+'}
+        </button>
       </div>
-
-      <div className="content-sections">
-        <div className="section professional-section">
-          <h2>Professional Experience</h2>
-          <div className="section-content">
-            {Object.entries(professionalExperience)
-              .slice(0, showAllExperience ? undefined : 3)
-              .map(([key, item]) => (
-                <InteractiveCard key={key} item={item} itemKey={key} />
-              ))}
-            {Object.entries(professionalExperience).length > 3 && (
-              <button 
-                className="see-more-btn"
-                onClick={() => setShowAllExperience(!showAllExperience)}
-              >
-                {showAllExperience ? 'See Less Experience' : 'See More Experience'}
-              </button>
-            )}
-          </div>
-        </div>
-
-        <div className="expertise-sections">
-          <h2 className="expertise-main-title">Core Expertise</h2>
-          
-          <div className="section tech-stack-section">
-            <h3>Tech Stack</h3>
-            <div className="expertise-grid">
-              {Object.entries(techStack).map(([key, item]) => (
-                <ExpertiseCard key={key} item={item} itemKey={key} />
+      {isExpanded && (
+        <div className="card-content">
+          <p>{item.description}</p>
+          {item.tags && (
+            <div className="card-tags">
+              {item.tags.map((tag, index) => (
+                <span key={index} className="tag">{tag}</span>
               ))}
             </div>
-          </div>
-
-          <div className="section security-specializations-section">
-            <h3>Security Specializations</h3>
-            <div className="expertise-grid">
-              {Object.entries(securitySpecializations).map(([key, item]) => (
-                <ExpertiseCard key={key} item={item} itemKey={key} />
-              ))}
-            </div>
-          </div>
-          <div className="section business-expertise-section">
-            <h3>Business & Leadership</h3>
-            <div className="expertise-grid">
-              {Object.entries(businessExpertise).map(([key, item]) => (
-                <ExpertiseCard key={key} item={item} itemKey={key} />
-              ))}
-            </div>
-          </div>
+          )}
+          {children}
         </div>
-
-        <div className="section tools-section">
-          <h2>Tools & Projects</h2>
-          <div className="projects-grid">
-            {Object.entries(projects).map(([key, project]) => (
-              <ProjectCard key={key} project={project} projectKey={key} />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="certs-section">
-        <h2>Certifications</h2>
-        <div className="certs-grid">
-          {Object.entries(certifications).map(([key, cert]) => (
-            <CertificationCard key={key} cert={cert} certKey={key} />
-          ))}
-        </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 
   return (
     <div className="App">
-      <header className="App-header">
-        <HomePage />
+      {/* Professional Header */}
+      <header className="header">
+        <div className="header-content">
+          {/* Profile Section */}
+          <div className="profile-section">
+            <div className="profile-avatar">🍬</div>
+            <div className="profile-info">
+              <h1>Logan Evans</h1>
+              <div className="profile-subtitle">Security Professional • Tool Builder</div>
+            </div>
+          </div>
+
+          {/* Compact Certifications */}
+          <div className="header-certs">
+            {Object.entries(certifications).map(([key, cert]) => (
+              <div
+                key={key}
+                className="cert-badge"
+                onClick={() => openCertModal(cert)}
+              >
+                {cert.icon} {cert.name}
+              </div>
+            ))}
+          </div>
+
+          {/* Social Links */}
+          <div className="header-social">
+            <a href="https://linkedin.com/in/logan-evans-okc" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
+            <a href="https://github.com/sw33tr0ll" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
+            <a href="https://x.com/sweetrollbandit" target="_blank" rel="noopener noreferrer" className="social-link">X</a>
+            <a 
+              href={`${process.env.PUBLIC_URL}/logan-evans-cv.pdf`}
+              download="Logan-Evans-CV.pdf"
+              rel="noopener noreferrer" 
+              className="social-link cv-download"
+            >
+              Download CV
+            </a>
+          </div>
+        </div>
       </header>
+
+      {/* Main Content */}
+      <main className="main-content">
+        {/* Professional Experience */}
+        <section className="section">
+          <div className="section-header">
+            <span className="section-icon">💼</span>
+            <h2 className="section-title">Professional Experience</h2>
+          </div>
+          <div className="cards-grid">
+            {professionalExperience
+              .slice(0, showAllExperience ? undefined : 3)
+              .map((exp) => (
+                <Card
+                  key={exp.id}
+                  item={exp}
+                  isExpanded={expandedCards[exp.id]}
+                  onToggle={() => toggleCardExpansion(exp.id)}
+                />
+              ))}
+          </div>
+          {professionalExperience.length > 3 && (
+            <button 
+              className="show-more-btn"
+              onClick={() => setShowAllExperience(!showAllExperience)}
+            >
+              {showAllExperience ? 'Show Less' : 'Show More Experience'}
+            </button>
+          )}
+        </section>
+
+        {/* Core Expertise */}
+        <section className="section">
+          <div className="section-header">
+            <span className="section-icon">🛡️</span>
+            <h2 className="section-title">Core Expertise</h2>
+          </div>
+          <div className="cards-grid">
+            {coreExpertise.map((expertise) => (
+              <Card
+                key={expertise.id}
+                item={expertise}
+                isExpanded={expandedCards[expertise.id]}
+                onToggle={() => toggleCardExpansion(expertise.id)}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* Tools & Projects */}
+        <section className="section">
+          <div className="section-header">
+            <span className="section-icon">🛠️</span>
+            <h2 className="section-title">Tools & Projects</h2>
+          </div>
+          <div className="cards-grid">
+            {projects.map((project) => (
+              <Card
+                key={project.id}
+                item={project}
+                isExpanded={expandedCards[project.id]}
+                onToggle={() => toggleCardExpansion(project.id)}
+              >
+                <button 
+                  className="show-more-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(project.link, '_blank');
+                  }}
+                >
+                  🔗 Visit Project
+                </button>
+              </Card>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      {/* Certification Modal */}
+      {selectedCert && (
+        <div className="cert-modal" onClick={closeCertModal}>
+          <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={closeCertModal}>×</button>
+            <div className="cert-modal-header">
+              <span className="cert-modal-icon">{selectedCert.icon}</span>
+              <div>
+                <div className="cert-modal-title">{selectedCert.fullName}</div>
+                <div className="cert-modal-issuer">{selectedCert.issuer}</div>
+              </div>
+            </div>
+            <p>{selectedCert.description}</p>
+            <button 
+              className="show-more-btn"
+              onClick={() => window.open(selectedCert.link, '_blank')}
+            >
+              🔗 View Certification Details
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
