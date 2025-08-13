@@ -167,19 +167,11 @@ function App() {
     },
     {
       id: 'achilles',
-      title: 'Achilles CTF - RCE via Calculator',
+      title: 'CTF - RCE via Calculator',
       description: 'Advanced Capture The Flag challenge featuring Remote Code Execution through calculator functionality. Built with Python, Docker, and AWS Serverless architecture.',
-      link: 'https://achilles.technology',
+      link: 'https://github.com/sw33tr0ll/unhackable_calculator',
       category: 'CTF Challenges',
       tags: ['CTF', 'RCE', 'Python', 'Docker', 'AWS']
-    },
-    {
-      id: 'parisctf',
-      title: 'Paris CTF - Path Traversal Challenge',
-      description: 'Sophisticated CTF demonstrating path traversal vulnerabilities through an insecure translation library used for multi-language site loading.',
-      link: 'https://ctf.paris.systems',
-      category: 'CTF Challenges',
-      tags: ['CTF', 'Path Traversal', 'Web Security']
     },
     {
       id: 'elongate',
