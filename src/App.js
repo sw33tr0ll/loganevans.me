@@ -264,14 +264,17 @@ function App() {
             <a href="https://linkedin.com/in/logan-evans-okc" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
             <a href="https://github.com/sw33tr0ll" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
             <a href="https://x.com/sweetrollbandit" target="_blank" rel="noopener noreferrer" className="social-link">X</a>
-            <a 
-              href="/logan-evans-cv.pdf"
-              download="Logan-Evans-CV.pdf"
-              rel="noopener noreferrer" 
+            <button 
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/logan-evans-cv.pdf';
+                link.download = 'Logan-Evans-CV.pdf';
+                link.click();
+              }}
               className="social-link cv-download"
             >
               Download CV
-            </a>
+            </button>
           </div>
         </div>
       </header>
