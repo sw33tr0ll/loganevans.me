@@ -72,7 +72,7 @@ function App() {
     },
     {
       id: 'digitalsilence',
-      title: 'Lead Penetration Tester',
+      title: 'Senior Security Consultant',
       company: 'Digital Silence',
       period: '2020 - 2022',
       description: 'Elite penetration tester specializing in advanced application security and cloud infrastructure attacks. Led high-stakes engagements including infrastructure compromise, healthcare and financial services penetration testing, and stealth red team operations. Executed sophisticated multi-vector attacks across dynamic environments.',
