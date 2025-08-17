@@ -264,17 +264,15 @@ function App() {
             <a href="https://linkedin.com/in/logan-evans-okc" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
             <a href="https://github.com/sw33tr0ll" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
             <a href="https://x.com/sweetrollbandit" target="_blank" rel="noopener noreferrer" className="social-link">X</a>
-            <button 
-              onClick={() => {
-                const link = document.createElement('a');
-                link.href = '/logan-evans-cv.pdf';
-                link.download = 'Logan-Evans-CV.pdf';
-                link.click();
-              }}
+            <a 
+              href="https://loganevans-public.s3.us-east-1.amazonaws.com/logan-evans-cv.pdf"
+              download="Logan-Evans-CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer" 
               className="social-link cv-download"
             >
               Download CV
-            </button>
+            </a>
           </div>
         </div>
       </header>
