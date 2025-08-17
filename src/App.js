@@ -265,7 +265,7 @@ function App() {
             <a href="https://github.com/sw33tr0ll" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
             <a href="https://x.com/sweetrollbandit" target="_blank" rel="noopener noreferrer" className="social-link">X</a>
             <a 
-              href={`${process.env.PUBLIC_URL}/logan-evans-cv.pdf`}
+              href="/logan-evans-cv.pdf"
               download="Logan-Evans-CV.pdf"
               rel="noopener noreferrer" 
               className="social-link cv-download"
